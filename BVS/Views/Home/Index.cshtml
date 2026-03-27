@@ -2,45 +2,70 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="text-center mt-5">
-    <h1 class="display-4">🎬 BVS — Bogsy Video Store</h1>
-    <p class="lead">Video rental management system for Buhangin, Davao City</p>
-    <hr />
-    <div class="row mt-4">
-        <div class="col-md-3">
-            <div class="card text-white bg-primary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">👥 Customers</h5>
-                    <p class="card-text">Manage your customer library</p>
-                    <a href="/Customers" class="btn btn-light">Go →</a>
+<div class="text-center mt-3 mb-4">
+    <h1 style="color:#16425b; font-weight:800; font-size:2.5rem;">
+        <i class="fas fa-clapperboard"></i> BVS — Bogsy Video Store
+    </h1>
+    <p style="color:#3a7ca5; font-size:1.1rem;">
+        <i class="fas fa-location-dot me-1"></i> Video rental management system for Buhangin, Davao City
+    </p>
+    <hr style="border-color:#81c3d7;" />
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 text-center" style="border-top: 4px solid #2f6690;">
+            <div class="card-body">
+                <div style="font-size:2.5rem; color:#2f6690;">
+                    <i class="fas fa-users"></i>
                 </div>
+                <h5 class="card-title mt-2" style="color:#16425b;">Customers</h5>
+                <p class="card-text text-muted">Add and manage your customer library</p>
+                <a href="/Customers" class="btn btn-primary w-100">
+                    <i class="fas fa-arrow-right me-1"></i> Go
+                </a>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card text-white bg-success mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">🎥 Videos</h5>
-                    <p class="card-text">Add, edit, and manage videos</p>
-                    <a href="/Videos" class="btn btn-light">Go →</a>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 text-center" style="border-top: 4px solid #3a7ca5;">
+            <div class="card-body">
+                <div style="font-size:2.5rem; color:#3a7ca5;">
+                    <i class="fas fa-film"></i>
                 </div>
+                <h5 class="card-title mt-2" style="color:#16425b;">Videos</h5>
+                <p class="card-text text-muted">Manage VCD and DVD video library</p>
+                <a href="/Videos" class="btn btn-primary w-100">
+                    <i class="fas fa-arrow-right me-1"></i> Go
+                </a>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card text-white bg-warning mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">📋 Rentals</h5>
-                    <p class="card-text">Rent and return videos</p>
-                    <a href="/Rentals" class="btn btn-light">Go →</a>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 text-center" style="border-top: 4px solid #81c3d7;">
+            <div class="card-body">
+                <div style="font-size:2.5rem; color:#81c3d7;">
+                    <i class="fas fa-clipboard-list"></i>
                 </div>
+                <h5 class="card-title mt-2" style="color:#16425b;">Rentals</h5>
+                <p class="card-text text-muted">Rent and return videos with fee tracking</p>
+                <a href="/Rentals" class="btn btn-primary w-100">
+                    <i class="fas fa-arrow-right me-1"></i> Go
+                </a>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card text-white bg-danger mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">📊 Reports</h5>
-                    <p class="card-text">View inventory and rental reports</p>
-                    <a href="/Reports/VideoInventory" class="btn btn-light">Go →</a>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 text-center" style="border-top: 4px solid #16425b;">
+            <div class="card-body">
+                <div style="font-size:2.5rem; color:#16425b;">
+                    <i class="fas fa-chart-bar"></i>
                 </div>
+                <h5 class="card-title mt-2" style="color:#16425b;">Reports</h5>
+                <p class="card-text text-muted">View inventory and rental reports</p>
+                <a href="/Reports/VideoInventory" class="btn btn-primary w-100">
+                    <i class="fas fa-arrow-right me-1"></i> Go
+                </a>
             </div>
         </div>
     </div>

@@ -8,52 +8,224 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BVS.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        :root {
+            --bvs-darkest: #16425b;
+            --bvs-dark: #2f6690;
+            --bvs-mid: #3a7ca5;
+            --bvs-light: #81c3d7;
+            --bvs-neutral: #d9dcd6;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: linear-gradient(135deg, var(--bvs-darkest), var(--bvs-dark)) !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            padding: 0.75rem 1.5rem;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .navbar-brand span {
+            color: var(--bvs-light);
+        }
+
+        .nav-link {
+            color: var(--bvs-neutral) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            margin: 0 2px;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(129, 195, 215, 0.2);
+            color: white !important;
+        }
+
+        .nav-link.active {
+            background-color: var(--bvs-mid);
+            color: white !important;
+        }
+
+        /* MAIN CONTENT AREA */
+        .container > main {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            margin-top: 1rem;
+        }
+
+        /* PAGE TITLES */
+        h2 {
+            color: var(--bvs-darkest);
+            font-weight: 700;
+            border-left: 4px solid var(--bvs-mid);
+            padding-left: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* BUTTONS */
+        .btn-primary {
+            background-color: var(--bvs-dark);
+            border-color: var(--bvs-dark);
+        }
+        .btn-primary:hover {
+            background-color: var(--bvs-darkest);
+            border-color: var(--bvs-darkest);
+        }
+        .btn-success {
+            background-color: #2a9d6e;
+            border-color: #2a9d6e;
+        }
+        .btn-warning {
+            background-color: #e09f3e;
+            border-color: #e09f3e;
+            color: white;
+        }
+        .btn-warning:hover { color: white; }
+
+        /* TABLES */
+        .table thead {
+            background: linear-gradient(135deg, var(--bvs-darkest), var(--bvs-dark));
+            color: white;
+        }
+        .table thead th {
+            border: none;
+            font-weight: 600;
+            padding: 0.85rem 1rem;
+        }
+        .table tbody tr:hover {
+            background-color: rgba(129, 195, 215, 0.1);
+        }
+        .table-bordered {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--bvs-neutral);
+        }
+
+        /* CARDS */
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .card-header {
+            background: linear-gradient(135deg, var(--bvs-darkest), var(--bvs-dark));
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            padding: 0.85rem 1.25rem;
+        }
+
+        /* FORMS */
+        .form-control:focus, .form-select:focus {
+            border-color: var(--bvs-mid);
+            box-shadow: 0 0 0 0.2rem rgba(58, 124, 165, 0.25);
+        }
+        label {
+            font-weight: 600;
+            color: var(--bvs-darkest);
+        }
+
+        /* ALERTS */
+        .alert-info {
+            background-color: rgba(129, 195, 215, 0.2);
+            border-color: var(--bvs-light);
+            color: var(--bvs-darkest);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: linear-gradient(135deg, var(--bvs-darkest), var(--bvs-dark));
+            color: var(--bvs-neutral) !important;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer a {
+            color: var(--bvs-light) !important;
+        }
+        .footer .text-muted {
+            color: var(--bvs-neutral) !important;
+        }
+
+        /* BADGES */
+        .badge.bg-info {
+            background-color: var(--bvs-light) !important;
+            color: var(--bvs-darkest);
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BVS</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                     <span class="fas fa-clapperboard"></span><span>BVS</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Customers" asp-action="Index">Customers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Videos" asp-action="Index">Videos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Rentals" asp-action="Index">Rentals</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Reports" asp-action="VideoInventory">Reports</a>
-                        </li>
-                    </ul>
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+            <i class="fas fa-home me-1"></i> Home
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Customers" asp-action="Index">
+            <i class="fas fa-users me-1"></i> Customers
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Videos" asp-action="Index">
+            <i class="fas fa-film me-1"></i> Videos
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Rentals" asp-action="Index">
+            <i class="fas fa-clipboard-list me-1"></i> Rentals
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Reports" asp-action="VideoInventory">
+            <i class="fas fa-chart-bar me-1"></i> Reports
+        </a>
+    </li>
+</ul>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - BVS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer">
+        <div class="container text-center">
+            &copy; 2026 - <strong>BVS — Bogsy Video Store</strong> | Buhangin, Davao City
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
