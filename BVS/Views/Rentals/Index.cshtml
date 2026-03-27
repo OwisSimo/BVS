@@ -1,5 +1,59 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<BVS.Models.Rental>
+<h2>Rentals</h2>
+<a asp-action="Create" class="btn btn-primary mb-3">+ Rent a Video</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Video</th>
+            <th>Rent Date</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Fee</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            var overdue = !r.IsReturned && r.DueDate < DateTime.Today;
+            <tr class="@(overdue ? "table-danger" : r.IsReturned ? "table-secondary" : "")">
+                <td>@r.Customer?.FullName</td>
+                <td>@r.Video?.Title <span class="badge bg-info">@r.Video?.Category</span></td>
+                <td>@r.RentDate.ToString("MMM dd, yyyy")</td>
+                <td>@r.DueDate.ToString("MMM dd, yyyy")</td>
+                <td>
+                    @if (r.IsReturned)
+                    {
+                        <span class="badge bg-secondary">Returned</span>
+                    }
+                    else if (overdue)
+                    {
+
+                        <span class="badge bg-danger">Overdue</span>
+                    }
+                    else
+                    {
+
+                        <span class="badge bg-success">Active</span>
+                    }
+                </td>
+                <td>
+                    ₱@r.BaseFee
+                    @if (r.OverdueFine > 0)
+                    {
+                        <span class="text-danger">+₱@r.OverdueFine fine</span>
+                    }
+                </td>
+                <td>
+                    @if (!r.IsReturned)
+                    {
+                        <a asp-action="Return" asp-route-id="@r.RentalID"
+                           onclick="return confirm('Mark as returned?')"
+                           class="btn btn-sm btn-success">Return</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

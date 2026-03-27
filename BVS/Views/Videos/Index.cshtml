@@ -1,5 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model IEnumerable<BVS.Models.Video>
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
 }
+<h2>Video Library</h2>
+<a asp-action="Create" class="btn btn-primary mb-3">+ Add Video</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Rate</th>
+            <th>Total Copies</th>
+            <th>Max Days</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in Model)
+        {
+            <tr>
+                <td>@v.Title</td>
+                <td><span class="badge @(v.Category == "DVD" ? "bg-success" : "bg-info")">@v.Category</span></td>
+                <td>₱@v.RentalRate</td>
+                <td>@v.TotalCopies</td>
+                <td>@v.MaxDays day@(v.MaxDays > 1 ? "s" : "")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@v.VideoID" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@v.VideoID"
+                       onclick="return confirm('Delete this video?')"
+                       class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

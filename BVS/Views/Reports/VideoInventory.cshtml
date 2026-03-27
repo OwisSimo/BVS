@@ -1,5 +1,25 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<BVS.Models.Video>
+<h2>Video Inventory Report</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>In (Available)</th>
+            <th>Out (Rented)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in Model)
+        {
+            var rented = v.Rentals?.Count(r => !r.IsReturned) ?? 0;
+            var avail = v.TotalCopies - rented;
+            <tr>
+                <td>@v.Title</td>
+                <td><span class="badge bg-info">@v.Category</span></td>
+                <td class="@(avail == 0 ? "text-danger fw-bold" : "text-success fw-bold")">@avail</td>
+                <td>@rented</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,8 +1,47 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mt-5">
+    <h1 class="display-4">🎬 BVS — Bogsy Video Store</h1>
+    <p class="lead">Video rental management system for Buhangin, Davao City</p>
+    <hr />
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">👥 Customers</h5>
+                    <p class="card-text">Manage your customer library</p>
+                    <a href="/Customers" class="btn btn-light">Go →</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">🎥 Videos</h5>
+                    <p class="card-text">Add, edit, and manage videos</p>
+                    <a href="/Videos" class="btn btn-light">Go →</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">📋 Rentals</h5>
+                    <p class="card-text">Rent and return videos</p>
+                    <a href="/Rentals" class="btn btn-light">Go →</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">📊 Reports</h5>
+                    <p class="card-text">View inventory and rental reports</p>
+                    <a href="/Reports/VideoInventory" class="btn btn-light">Go →</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

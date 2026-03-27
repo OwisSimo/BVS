@@ -1,5 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    var customers = ViewBag.Customers as SelectList;
+    var videos = ViewBag.Videos as SelectList;
 }
+<h2>Rent a Video</h2>
+<form asp-action="Create" method="post" style="max-width:500px">
+    <div class="mb-3">
+        <label class="form-label">Customer</label>
+        <select name="customerID" class="form-select" required>
+            <option value="">-- Select Customer --</option>
+            @foreach (var c in customers)
+            {
+                <option value="@c.Value">@c.Text</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Available Video</label>
+        <select name="videoID" class="form-select" required>
+            <option value="">-- Select Video --</option>
+            @foreach (var v in videos)
+            {
+                <option value="@v.Value">@v.Text</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Rent Date</label>
+        <input type="date" name="rentDate" class="form-control"
+               value="@DateTime.Today.ToString("yyyy-MM-dd")" required />
+    </div>
+    <div class="alert alert-info" style="font-size:13px">
+        Due date is automatically calculated. Overdue charge is <strong>₱5/day</strong>.
+    </div>
+    <button type="submit" class="btn btn-success">Confirm Rental</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
