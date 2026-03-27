@@ -36,6 +36,7 @@ namespace BVS.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int customerID, int videoID, DateTime rentDate)
         {
             var video = await _db.Videos.FindAsync(videoID);

@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BVS</title>
+    <title> BVS | @ViewData["Title"]</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BVS.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bvs-darkest: #16425b;
@@ -18,9 +19,20 @@
             --bvs-neutral: #d9dcd6;
         }
 
+        /* BASE */
         body {
             background-color: #f4f6f8;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.97rem;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        p, label, td, th, input, select, textarea, button, .btn {
+            font-family: 'Lato', sans-serif;
         }
 
         /* NAVBAR */
@@ -32,9 +44,10 @@
 
         .navbar-brand {
             color: white !important;
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: 2px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
             text-transform: uppercase;
         }
 
@@ -42,13 +55,22 @@
             color: var(--bvs-light);
         }
 
+        .navbar-brand i {
+            color: var(--bvs-light);
+            margin-right: 6px;
+        }
+
         .nav-link {
             color: var(--bvs-neutral) !important;
-            font-weight: 500;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            font-weight: 400;
             padding: 0.5rem 1rem !important;
             border-radius: 6px;
             transition: all 0.2s ease;
             margin: 0 2px;
+            text-transform: uppercase;
         }
 
         .nav-link:hover {
@@ -72,14 +94,29 @@
 
         /* PAGE TITLES */
         h2 {
+            font-size: 1.9rem;
+            font-weight: 600;
             color: var(--bvs-darkest);
-            font-weight: 700;
             border-left: 4px solid var(--bvs-mid);
             padding-left: 0.75rem;
             margin-bottom: 1.25rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        h5.card-title {
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         /* BUTTONS */
+        .btn {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
         .btn-primary {
             background-color: var(--bvs-dark);
             border-color: var(--bvs-dark);
@@ -106,8 +143,16 @@
         }
         .table thead th {
             border: none;
-            font-weight: 600;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             padding: 0.85rem 1rem;
+        }
+        .table tbody td {
+            font-family: 'Lato', sans-serif;
+            vertical-align: middle;
         }
         .table tbody tr:hover {
             background-color: rgba(129, 195, 215, 0.1);
@@ -127,17 +172,23 @@
         .card-header {
             background: linear-gradient(135deg, var(--bvs-darkest), var(--bvs-dark));
             color: white;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
             border-radius: 10px 10px 0 0 !important;
             padding: 0.85rem 1.25rem;
         }
 
         /* FORMS */
+        .form-control, .form-select {
+            font-family: 'Lato', sans-serif;
+        }
         .form-control:focus, .form-select:focus {
             border-color: var(--bvs-mid);
             box-shadow: 0 0 0 0.2rem rgba(58, 124, 165, 0.25);
         }
         label {
-            font-weight: 600;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
             color: var(--bvs-darkest);
         }
 
@@ -146,6 +197,7 @@
             background-color: rgba(129, 195, 215, 0.2);
             border-color: var(--bvs-light);
             color: var(--bvs-darkest);
+            font-family: 'Lato', sans-serif;
         }
 
         /* FOOTER */
@@ -154,6 +206,8 @@
             color: var(--bvs-neutral) !important;
             padding: 1rem 0;
             margin-top: 2rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
         }
         .footer a {
             color: var(--bvs-light) !important;
@@ -163,6 +217,10 @@
         }
 
         /* BADGES */
+        .badge {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+        }
         .badge.bg-info {
             background-color: var(--bvs-light) !important;
             color: var(--bvs-darkest);
@@ -174,7 +232,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                     <span class="fas fa-clapperboard"></span><span>BVS</span>
+                    <i class="fas fa-clapperboard"></i> <span>BVS</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -182,33 +240,33 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-<ul class="navbar-nav flex-grow-1">
-    <li class="nav-item">
-        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
-            <i class="fas fa-home me-1"></i> Home
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="Customers" asp-action="Index">
-            <i class="fas fa-users me-1"></i> Customers
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="Videos" asp-action="Index">
-            <i class="fas fa-film me-1"></i> Videos
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="Rentals" asp-action="Index">
-            <i class="fas fa-clipboard-list me-1"></i> Rentals
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="Reports" asp-action="VideoInventory">
-            <i class="fas fa-chart-bar me-1"></i> Reports
-        </a>
-    </li>
-</ul>
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="fas fa-home me-1"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Customers" asp-action="Index">
+                                <i class="fas fa-users me-1"></i> Customers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Videos" asp-action="Index">
+                                <i class="fas fa-film me-1"></i> Videos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Rentals" asp-action="Index">
+                                <i class="fas fa-clipboard-list me-1"></i> Rentals
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Reports" asp-action="VideoInventory">
+                                <i class="fas fa-chart-bar me-1"></i> Reports
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>

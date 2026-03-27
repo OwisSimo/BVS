@@ -16,12 +16,20 @@ namespace BVS.Controllers
         public IActionResult Create() => View();
 
         [HttpPost]
-        public async Task<IActionResult> Create(Video v)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Title,Category,TotalCopies,MaxDays")] Video v)
         {
-            if (!ModelState.IsValid) return View(v);
-            _db.Videos.Add(v);
-            await _db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                _db.Videos.Add(v);
+                await _db.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            foreach (var error in ModelState.Values.SelectMany(v2 => v2.Errors))
+            {
+                Console.WriteLine(error.ErrorMessage);
+            }
+            return View(v);
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -32,12 +40,17 @@ namespace BVS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Video v)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("VideoID,Title,Category,TotalCopies,MaxDays")] Video v)
         {
-            if (!ModelState.IsValid) return View(v);
-            _db.Videos.Update(v);
-            await _db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if (id != v.VideoID) return NotFound();
+            if (ModelState.IsValid)
+            {
+                _db.Videos.Update(v);
+                await _db.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(v);
         }
 
         public async Task<IActionResult> Delete(int id)

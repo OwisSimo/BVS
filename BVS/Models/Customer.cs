@@ -8,12 +8,12 @@ namespace BVS.Models
 
         [Required]
         [Display(Name = "Full Name")]
-        public string FullName { get; set; }
+        public string FullName { get; set; } = string.Empty;
 
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
+        public string? Phone { get; set; }
+        public string? Email { get; set; }
+        public string? Address { get; set; }
 
-        public ICollection<Rental> Rentals { get; set; }
+        public ICollection<Rental> Rentals { get; set; } = new List<Rental>();
     }
 }

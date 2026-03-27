@@ -7,10 +7,10 @@ namespace BVS.Models
         public int RentalID { get; set; }
 
         public int CustomerID { get; set; }
-        public Customer Customer { get; set; }
+        public Customer? Customer { get; set; }
 
         public int VideoID { get; set; }
-        public Video Video { get; set; }
+        public Video? Video { get; set; }
 
         [Display(Name = "Rent Date")]
         public DateTime RentDate { get; set; }

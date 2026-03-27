@@ -16,12 +16,20 @@ namespace BVS.Controllers
         public IActionResult Create() => View();
 
         [HttpPost]
-        public async Task<IActionResult> Create(Customer c)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("FullName,Phone,Email,Address")] Customer c)
         {
-            if (!ModelState.IsValid) return View(c);
-            _db.Customers.Add(c);
-            await _db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                _db.Customers.Add(c);
+                await _db.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            {
+                Console.WriteLine(error.ErrorMessage);
+            }
+            return View(c);
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -32,12 +40,17 @@ namespace BVS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Customer c)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("CustomerID,FullName,Phone,Email,Address")] Customer c)
         {
-            if (!ModelState.IsValid) return View(c);
-            _db.Customers.Update(c);
-            await _db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if (id != c.CustomerID) return NotFound();
+            if (ModelState.IsValid)
+            {
+                _db.Customers.Update(c);
+                await _db.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(c);
         }
 
         public async Task<IActionResult> Delete(int id)
